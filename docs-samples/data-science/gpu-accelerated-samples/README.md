@@ -2,6 +2,8 @@
 
 Jupyter notebooks demonstrating GPU acceleration using NVIDIA RAPIDS libraries on Microsoft Fabric and Azure VMs with NVIDIA GPUs.
 
+> Based on examples from [NVIDIA RAPIDS](https://github.com/rapidsai) (Apache 2.0 License, Copyright NVIDIA Corporation). Modified and tested for Azure GPU VM environment.
+
 ## Requirements
 
 - NVIDIA GPU (Tesla T4 or better)
@@ -24,6 +26,8 @@ Jupyter notebooks demonstrating GPU acceleration using NVIDIA RAPIDS libraries o
 ## cuCIM Medical Imaging
 
 GPU-accelerated image processing for digital pathology and microscopy using [cuCIM](https://github.com/rapidsai/cucim).
+
+> Based on examples from [rapidsai/cucim](https://github.com/rapidsai/cucim) (Apache 2.0 License, Copyright NVIDIA Corporation). Modified for Azure GPU VM environment.
 
 | Notebook | Description |
 |----------|-------------|
