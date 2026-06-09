@@ -16,12 +16,15 @@ Jupyter notebooks demonstrating GPU acceleration using NVIDIA RAPIDS libraries o
 
 | Notebook | Description |
 |----------|-------------|
-| [cudf-pandas-accelerator-demo.ipynb](cudf-pandas-accelerator-demo.ipynb) | Drop-in GPU acceleration for pandas with `cudf.pandas` — no code changes needed |
+| [rapids-gpu-accelerated-demo.ipynb](rapids-gpu-accelerated-demo.ipynb) | End-to-end GPU vs CPU benchmark: DataFrames, strings, KMeans, Random Forest, text embeddings, and KNN search |
 | [cudf-pandas-stock-analysis.ipynb](cudf-pandas-stock-analysis.ipynb) | Stock market data analysis using GPU-accelerated pandas (read, merge, resample, plot) |
 | [cuml-scikit-learn-accelerator-demo.ipynb](cuml-scikit-learn-accelerator-demo.ipynb) | Drop-in GPU acceleration for scikit-learn (PCA, UMAP, KNN, HDBSCAN on activity recognition data) |
-| [gpu-vs-cpu-compute-benchmark.ipynb](gpu-vs-cpu-compute-benchmark.ipynb) | Side-by-side GPU vs CPU benchmark for common compute operations |
-| [rapids-dataframe-gpu-vs-cpu.ipynb](rapids-dataframe-gpu-vs-cpu.ipynb) | RAPIDS cuDF DataFrame operations compared to pandas on larger datasets |
-| [multi-gpu-embedding-and-knn-search.ipynb](multi-gpu-embedding-and-knn-search.ipynb) | Multi-GPU text embedding generation and KNN similarity search using Ray + RAPIDS |
+
+### Notes
+
+- **cudf-pandas-stock-analysis.ipynb** uses `%load_ext cudf.pandas` which must be the very first executed statement before any `import pandas`. In Fabric, pandas may be pre-imported by the environment — if so, add `cudf.pandas` to the Fabric session pre-run script.
+- **cuml-scikit-learn-accelerator-demo.ipynb** downloads the UCI HAR dataset to `/tmp/HAR_data/` on first run (requires internet access).
+- **cudf-pandas-stock-analysis.ipynb** downloads stock price data from Yahoo Finance (requires internet access).
 
 ## cuCIM Medical Imaging
 
@@ -39,19 +42,6 @@ GPU-accelerated image processing for digital pathology and microscopy using [cuC
 
 ### Setup for cuCIM notebooks
 
-**Notebooks 01 and 02** require a whole-slide image file. Before running them, create the `input/` folder and download a sample image:
-
-```bash
-cd cucim_medical_imaging
-mkdir -p input
-# Download a sample Aperio SVS whole-slide image (~170MB)
-wget -O input/image.tif https://openslide.cs.cmu.edu/download/openslide-testdata/Aperio/CMU-1.svs
-```
+**Notebooks 01 and 02** auto-download a sample whole-slide image (~170MB from OpenSlide) on first run. No manual setup needed.
 
 **Notebooks 03, 04, and 05** are self-contained — they use synthetic data from scikit-image and do not require any additional files.
-
-### Notes
-
-- **multi-gpu-embedding-and-knn-search.ipynb** requires an Azure OpenAI API key and endpoint. Update the `api_key` and `azure_endpoint` values in Step 1 before running.
-- **cuml-scikit-learn-accelerator-demo.ipynb** downloads the UCI HAR dataset to `/tmp/HAR_data/` on first run (requires internet access).
-- **cudf-pandas-stock-analysis.ipynb** downloads stock price data from Yahoo Finance (requires internet access).
